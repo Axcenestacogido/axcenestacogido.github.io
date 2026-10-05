@@ -4,12 +4,12 @@ tags: articulo
 title: "[PLANTILLA] Título del artículo (editar o borrar este archivo de ejemplo)"
 metaDescripcion: "Meta descripción de ejemplo: resume el artículo en 150-160 caracteres para el resultado de búsqueda de Google."
 fechaPublicacion: 2026-10-05
-permalink: /articulos/ejemplo-articulo/
+permalink: /articulos/<slug>/
 ---
 
 Este archivo **no es contenido real**: es la plantilla que debe seguir el agente redactor
 (`redactor-blog-afiliacion`, ver `vault/30-Conocimiento/blog-afiliacion/_indice.md`) al escribir
-un artículo nuevo. Bórralo o sustitúyelo cuando llegue el primer artículo de verdad.
+un artículo nuevo. Vive fuera de `src/` para que no se publique: cópiala, no la muevas.
 
 ## Cómo crear un artículo nuevo
 
@@ -20,10 +20,10 @@ un artículo nuevo. Bórralo o sustitúyelo cuando llegue el primer artículo de
 4. Para cualquier enlace de afiliado, usa el shortcode `enlaceAfiliado` — nunca un `<a>` a
    mano, porque este shortcode ya añade `rel="sponsored nofollow"`:
 
-   {% enlaceAfiliado "https://www.amazon.es/dp/ASIN?tag=tu-tag-21", "nombre del producto" %}
+   {% enlaceAfiliado "https://www.amazon.es/dp/ASIN", "nombre del producto" %}
 
-   (sustituye la URL de ejemplo por la del producto real, con tu tag de afiliado de Amazon
-   Associates).
+   (pon el ASIN real del producto. El tag NO se escribe aquí: lo añade el shortcode desde
+   `site.amazonTag`. Si aún no sabes el ASIN, deja `ASIN` y saldrá una búsqueda en Amazon.)
 
 5. No cites el precio como un dato fijo en el texto: Amazon lo cambia sin aviso y es una
    condición del programa no "congelarlo" en el artículo.

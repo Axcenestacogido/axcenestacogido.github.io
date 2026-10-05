@@ -14,29 +14,52 @@
 //   la carpeta _site. Es el mismo patron que GitHub recomienda para cualquier generador no
 //   nativo (Hugo, Next export, etc.).
 
+import site from "./src/_data/site.js";
+
 export default function (eleventyConfig) {
   // CSS y cualquier archivo estatico se copian tal cual a la salida.
   eleventyConfig.addPassthroughCopy("src/assets");
 
-  // Fecha legible en es-ES para las plantillas (articulos, portada).
+  // Fecha legible en es-ES. En UTC: una fecha de front matter (2026-10-05) es medianoche UTC y,
+  // en un runner o un equipo al oeste de Greenwich, salia como el dia anterior.
   eleventyConfig.addFilter("fechaEs", (fecha) => {
     const d = fecha instanceof Date ? fecha : new Date(fecha);
-    return d.toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" });
+    return d.toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+  });
+
+  // Fecha ISO (AAAA-MM-DD) para el sitemap.
+  eleventyConfig.addFilter("fechaIso", (fecha) => {
+    const d = fecha instanceof Date ? fecha : new Date(fecha);
+    return d.toISOString().slice(0, 10);
   });
 
   // Año actual, para el pie de página (© {% anio %}).
   eleventyConfig.addShortcode("anio", () => new Date().getFullYear());
 
-  // Enlace de afiliado "correcto" para usar dentro de un articulo en Markdown:
-  //   {% enlaceAfiliado "https://www.amazon.es/dp/ASIN?tag=tu-tag-21", "texto visible" %}
-  // Lleva rel="sponsored nofollow" (lo pide Google para enlaces pagados/afiliados y es
-  // ademas una condicion implicita del programa de Amazon Associates) y se abre en
-  // pestaña nueva para no sacar al lector del articulo.
+  // Enlace de afiliado para usar dentro de un articulo en Markdown:
+  //   {% enlaceAfiliado "https://www.amazon.es/dp/B0XXXXXXXX", "texto visible" %}
+  // - Lleva rel="sponsored nofollow" (lo pide Google para enlaces de afiliado).
+  // - El tag sale de site.amazonTag: no se escribe en cada articulo. Si aun no hay tag, el
+  //   enlace va sin el.
+  // - Si el ASIN es un marcador ("ASIN", "EJEMPLO-ASIN-3"...), el enlace es una busqueda en
+  //   Amazon por el texto visible: asi el sitio publicado nunca tiene un enlace roto.
   eleventyConfig.addShortcode("enlaceAfiliado", (url, texto) => {
     if (!url || !texto) {
       throw new Error('enlaceAfiliado necesita {% enlaceAfiliado "URL", "texto" %}');
     }
-    return `<a href="${url}" rel="sponsored nofollow noopener" target="_blank">${texto}</a>`;
+    const tag = site.amazonTag ?? "";
+    let destino;
+    const u = new URL(url);
+    const asin = /\/dp\/([^/?]+)/.exec(u.pathname)?.[1] ?? "";
+    if (!asin || /ASIN|EJEMPLO/i.test(asin)) {
+      destino = new URL(`https://${u.hostname}/s`);
+      destino.searchParams.set("k", texto.replace(/<[^>]*>/g, ""));
+    } else {
+      destino = new URL(`https://${u.hostname}/dp/${asin}`);
+    }
+    if (tag) destino.searchParams.set("tag", tag);
+    const escapar = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+    return `<a href="${escapar(destino.toString())}" rel="sponsored nofollow noopener" target="_blank">${texto}</a>`;
   });
 
   return {

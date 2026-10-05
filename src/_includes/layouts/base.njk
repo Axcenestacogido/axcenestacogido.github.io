@@ -6,6 +6,12 @@
   <title>{% if title %}{{ title }} · {{ site.nombre }}{% else %}{{ site.nombre }}{% endif %}</title>
   <meta name="description" content="{{ metaDescripcion or site.descripcion }}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="{% if layout == 'layouts/articulo.njk' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ title or site.nombre }}">
+  <meta property="og:description" content="{{ metaDescripcion or site.descripcion }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.nombre }}">
+  <meta property="og:locale" content="es_ES">
   <link rel="stylesheet" href="/assets/css/style.css">
 
   {# TODO (dueño/estratega): cuando se dé de alta AdSense, pegar aquí el script de
@@ -23,7 +29,7 @@
 
   <footer class="sitio-pie">
     <p class="disclosure">{{ site.disclosureAmazon }}</p>
-    <p>&copy; {% anio %} {{ site.nombre }}</p>
+    <p>&copy; {% anio %} {{ site.nombre }} · <a href="/privacidad/">Aviso legal y privacidad</a></p>
   </footer>
 </body>
 </html>

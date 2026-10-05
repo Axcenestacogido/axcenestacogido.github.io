@@ -1,142 +1,58 @@
-# Blog de afiliación (Amazon Associates + AdSense) — esqueleto técnico
+# Perro Senior en Casa — blog de afiliación
 
-Esqueleto local de un blog de nicho con afiliación, listo para generar páginas a partir de
-artículos en Markdown y desplegarse **gratis** en GitHub Pages (subdominio `usuario.github.io`,
-sin dominio propio).
+Blog estático (Eleventy) sobre ayudas de movilidad para perros mayores, con enlaces de afiliado de
+Amazon.es. Se publica gratis en GitHub Pages: **https://axcenestacogido.github.io/**
 
-Es un negocio **independiente** del resto de Axcencorp (print-on-demand, Nexora, KDP, YouTube):
-vive en esta carpeta separada solo porque de momento no tiene repositorio propio. El plan y las
-reglas del negocio (Amazon Associates, AdSense, cumplimiento legal) están en
-`vault/30-Conocimiento/blog-afiliacion/_indice.md`, en el repositorio de Axcencorp.
+- Código fuente: `proyectos/blog-afiliacion/` dentro del repositorio de Axcencorp.
+- Repositorio publicado: `github.com/Axcenestacogido/axcenestacogido.github.io` (solo este
+  proyecto). Cada push a `main` lo construye y despliega el workflow `.github/workflows/deploy.yml`.
+- Plan, reglas y cumplimiento del negocio: `vault/30-Conocimiento/blog-afiliacion/_indice.md`.
 
-## Por qué Eleventy (11ty) y no Jekyll/Hugo/Astro
-
-- **Jekyll** es el generador "nativo" de GitHub Pages (se construye solo, sin Action), pero
-  exige Ruby + Bundler. Esta máquina de desarrollo (Windows) no tiene Ruby instalado, y añadir
-  esa dependencia solo para esto habría sido más mantenimiento, no menos — justo lo contrario de
-  lo que pedía el encargo.
-- **Hugo** exige descargar e instalar un binario de Go aparte.
-- **Astro** es más pesado para lo que hace falta aquí: convertir Markdown en HTML con una
-  plantilla fija y poco más. Tiene su propio runtime de render, islas de componentes, etc. —
-  capacidad que este sitio no necesita.
-- Esta máquina ya tiene **Node y npm** instalados y en uso por el resto de Axcencorp. Eleventy es
-  "`npm install` y listo": sin build de JS, sin framework de componentes, un solo archivo de
-  configuración (`eleventy.config.js`), Markdown con Nunjucks para las plantillas.
-- La contrapartida: GitHub Pages no construye Eleventy de forma nativa, así que el despliegue
-  necesita un workflow de GitHub Actions (incluido en `.github/workflows/deploy.yml`) que corre
-  `npm run build` y publica `_site/`. Es el patrón que GitHub documenta para cualquier
-  generador no nativo.
-
-## Estructura
-
-```
-proyectos/blog-afiliacion/
-├── package.json              # dependencia: @11ty/eleventy
-├── eleventy.config.js        # configuración de 11ty (carpetas, shortcodes, filtros)
-├── src/
-│   ├── index.njk              # página de inicio (lista los artículos)
-│   ├── articulos/
-│   │   └── ejemplo-articulo.md   # PLANTILLA de artículo — no es contenido real, bórrala o
-│   │                              # cópiala al escribir el primer artículo de verdad
-│   ├── _includes/layouts/
-│   │   ├── base.njk           # HTML base: head, cabecera, pie con el disclosure de Amazon
-│   │   └── articulo.njk       # plantilla de artículo: título, fecha, disclosure arriba del
-│   │                            # cuerpo, hueco de contenido
-│   ├── _data/site.js          # datos globales del sitio (nombre, descripción, URL, disclosure)
-│   └── assets/css/style.css   # estilos mínimos
-└── .github/workflows/deploy.yml  # workflow de despliegue a GitHub Pages (ver nota abajo)
-```
-
-## Cómo se cumple cada requisito del encargo
-
-- **Meta descripción**: campo `metaDescripcion` en el front matter de cada artículo, usado en
-  `<meta name="description">` (ver `src/_includes/layouts/base.njk`).
-- **Enlaces de afiliado con `rel="sponsored nofollow"`**: shortcode `enlaceAfiliado` (definido en
-  `eleventy.config.js`), documentado con un ejemplo de uso en `src/articulos/ejemplo-articulo.md`.
-  No se escriben enlaces `<a>` de afiliado a mano para no olvidar el atributo.
-- **Disclosure obligatorio de Amazon Associates**: texto exacto exigido por el programa
-  ("As an Amazon Associate I earn from qualifying purchases", en español en `src/_data/site.js`,
-  campo `disclosureAmazon`). Se inserta automáticamente **dos veces**: arriba de cada artículo
-  (lo exige la normativa de disclosure de la FTC y la Directiva Ómnibus de la UE — "cerca del
-  enlace o al principio del contenido") y en el pie de cada página.
-- **Página de inicio simple**: `src/index.njk`, lista los artículos publicados por fecha.
-
-## Build y comprobación local (ya verificado)
+## Uso
 
 ```bash
-cd proyectos/blog-afiliacion
 npm install
-npm run build      # genera proyectos/blog-afiliacion/_site/
-npm run dev         # servidor local con recarga en vivo, para previsualizar
-npm run clean        # borra _site/ (no usar rm -rf a mano, ver nota de permisos del proyecto)
+npm run dev     # previsualización local con recarga
+npm run build   # genera _site/
 ```
 
-El `npm run build` se ejecutó y verificó al construir este esqueleto (dos páginas generadas sin
-error: la portada y el artículo de ejemplo). `_site/` no se versiona (está en `.gitignore`): se
-regenera siempre con `npm run build`.
+## Escribir un artículo
 
-## Qué falta por decidir (no es parte de este encargo técnico)
+Copia `plantillas/articulo-ejemplo.md` a `src/articulos/<slug>.md` y rellena el front matter
+(`title`, `metaDescripcion`, `fechaPublicacion`, `permalink`, `tags: articulo`). La plantilla está
+fuera de `src/` a propósito: así no se publica.
 
-- El **nicho** y el nombre definitivo del sitio (`site.nombre`, `site.descripcion` en
-  `src/_data/site.js` son placeholders). Lo decide `estratega-blog-afiliacion`.
-- El **tag de afiliado de Amazon** (`?tag=tu-tag-21` en el ejemplo) — se obtiene al dar de alta
-  Amazon Associates.
-- El script de **Google AdSense** (verificación del sitio y, tras la aprobación, los anuncios):
-  deliberadamente no está incluido, para no declarar un ID de AdSense que todavía no existe
-  (ver comentario `TODO` en `src/_includes/layouts/base.njk`).
-- Los **artículos de contenido real**: no es tarea de este esqueleto técnico, los escribe el
-  agente redactor.
+Enlaces a productos, siempre con el shortcode (nunca un `<a>` a mano):
 
----
+```njk
+{% enlaceAfiliado "https://www.amazon.es/dp/B0XXXXXXXX", "Nombre del producto" %}
+```
 
-## Pasos manuales que le quedan al dueño para publicarlo de verdad
+- Pone `rel="sponsored nofollow"` y añade el tag de `site.amazonTag` (`src/_data/site.js`).
+- Si el ASIN es un marcador (`ASIN`, `EJEMPLO-ASIN-3`…), genera una búsqueda en Amazon.es por el
+  nombre del producto: el sitio nunca publica un enlace roto. Cambia el marcador por el ASIN real
+  cuando lo tengas.
+- No pongas precios fijos en el texto: Amazon los cambia sin aviso.
 
-La sesión de `gh` (GitHub CLI) disponible en esta máquina es **solo lectura** de la cuenta del
-dueño: no se ha creado ningún repositorio remoto, no se ha hecho push y no se ha tocado la
-configuración de GitHub Pages de ninguna cuenta. Todo lo anterior está solo en esta carpeta,
-dentro del repositorio local de Axcencorp, commiteado localmente.
+## Lo que falta y es del dueño
 
-El usuario de GitHub autenticado en esta máquina es **`Axcenestacogido`** (comprobado con
-`gh api user`, solo lectura). Hoy **no existe** ningún repositorio `Axcenestacogido.github.io`
-en esa cuenta (comprobado con `gh repo list`), así que el nombre está libre.
+1. **Alta en Amazon Afiliados (amazon.es)** con la URL del sitio ya publicado. Al recibir el tag
+   (p. ej. `nombre-21`), ponerlo en `amazonTag` de `src/_data/site.js`: todos los enlaces lo
+   llevan a partir del siguiente despliegue. Desde el alta corren **180 días para 3 ventas**.
+2. **Revisar los 7 artículos** del lote piloto antes de darlos por definitivos.
+3. **Nombre del sitio**: "Perro Senior en Casa" es provisional; se cambia en `site.nombre`.
+4. **Aviso legal**: si el sitio empieza a generar ingresos, la LSSI pide identificar al titular
+   (nombre, NIF y un correo) en `src/privacidad.md`. No se ha puesto ningún dato personal.
+5. **AdSense** (cuando haya tráfico): pegar su script en `src/_includes/layouts/base.njk`, y
+   actualizar la página de privacidad y añadir el aviso de cookies **antes** de activarlo.
+6. Opcional: dominio propio (~10-11 USD/año) — es gasto, necesita tu sí.
 
-1. **Crear el repositorio nuevo en GitHub**, con el nombre EXACTO:
+## Publicar cambios
 
-   ```
-   Axcenestacogido.github.io
-   ```
+El repositorio publicado contiene solo esta carpeta. Desde la raíz de Axcencorp:
 
-   Ese nombre exacto es obligatorio: es la convención especial de GitHub Pages para una
-   "página de usuario", la única que se sirve en la raíz del subdominio
-   (`https://axcenestacogido.github.io/`, sin ninguna ruta extra detrás). Cualquier otro nombre
-   de repositorio publicaría el sitio en `https://axcenestacogido.github.io/nombre-del-repo/`
-   (una "página de proyecto"), que también es gratis pero no es lo que se pidió ("tipo
-   usuario.github.io"). Puede crearse privado o público — GitHub Pages funciona con ambos en
-   cuentas con GitHub Pro/Team/Enterprise; en cuentas gratuitas personales **tiene que ser
-   público** para poder activar Pages.
+```bash
+git subtree push --prefix proyectos/blog-afiliacion blog main
+```
 
-2. **Copiar el contenido de esta carpeta a la raíz de ese repositorio nuevo** (no como
-   subcarpeta): todo lo que hay dentro de `proyectos/blog-afiliacion/` — incluido
-   `.github/workflows/deploy.yml`, que debe quedar en `.github/workflows/deploy.yml` en la raíz
-   del repo nuevo para que GitHub Actions lo detecte y lo ejecute. No copiar `node_modules/` ni
-   `_site/` (se regeneran con `npm install` y `npm run build`).
-
-3. **Hacer push** de ese contenido a la rama `main` del repositorio nuevo. El workflow de
-   despliegue está configurado para dispararse automáticamente con cada push a `main`.
-
-4. **Activar GitHub Pages** en la configuración del repositorio nuevo: `Settings` → `Pages` →
-   en "Build and deployment", `Source` = **"GitHub Actions"** (no "Deploy from a branch" — ese
-   modo serviría para Jekyll sin build, pero aquí el sitio lo construye el workflow). Con el
-   repositorio llamado `Axcenestacogido.github.io`, GitHub activa el subdominio automáticamente
-   en cuanto el primer despliegue del workflow termina bien.
-
-5. **Verificar**: entrar a `https://axcenestacogido.github.io/` y comprobar que carga la
-   portada y el artículo de ejemplo. Revisar en la pestaña "Actions" del repositorio que el
-   workflow `Desplegar a GitHub Pages` terminó en verde.
-
-6. Cuando haya nicho y tag de afiliado decididos: editar `src/_data/site.js` (nombre,
-   descripción, URL si cambia) y sustituir/borrar `src/articulos/ejemplo-articulo.md` por
-   artículos reales.
-
-Nada de esto requiere gasto: GitHub Pages para un repositorio de usuario y GitHub Actions para
-un repositorio público son gratuitos sin límite de uso razonable.
+(el remoto `blog` apunta a `https://github.com/Axcenestacogido/axcenestacogido.github.io.git`).

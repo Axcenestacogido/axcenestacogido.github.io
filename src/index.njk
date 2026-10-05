@@ -1,6 +1,5 @@
 ---
 layout: layouts/base.njk
-title: Inicio
 eleventyExcludeFromCollections: true
 permalink: /
 ---
@@ -10,9 +9,9 @@ permalink: /
 
   <h2>Últimos artículos</h2>
   <ul class="lista-articulos">
-    {% for articulo in collections.articulo | reverse %}
+    {% for articulo in collections.articulo | sort(true, false, "data.fechaPublicacion") %}
     <li>
-      <h2><a href="{{ articulo.url }}">{{ articulo.data.title }}</a></h2>
+      <h3><a href="{{ articulo.url }}">{{ articulo.data.title }}</a></h3>
       {% if articulo.data.metaDescripcion %}<p>{{ articulo.data.metaDescripcion }}</p>{% endif %}
     </li>
     {% else %}

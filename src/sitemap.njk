@@ -1,0 +1,12 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ site.url }}/</loc></url>
+{%- for articulo in collections.articulo %}
+  <url><loc>{{ site.url }}{{ articulo.url }}</loc>{% if articulo.data.fechaPublicacion %}<lastmod>{{ articulo.data.fechaPublicacion | fechaIso }}</lastmod>{% endif %}</url>
+{%- endfor %}
+  <url><loc>{{ site.url }}/privacidad/</loc></url>
+</urlset>

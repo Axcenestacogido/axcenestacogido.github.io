@@ -11,7 +11,7 @@ export default {
   url: "https://axcenestacogido.github.io",
   // Tag de Amazon Afiliados (amazon.es), p. ej. "minombre-21". Vacio mientras no haya alta: los
   // enlaces salen como busquedas normales en Amazon, sin tag, y no hay ningun enlace roto.
-  amazonTag: "",
+  amazonTag: "perrosenioren-21",
   // Texto que exige el Acuerdo Operativo de Amazon.es Afiliados, tal cual.
   disclosureAmazon:
     "En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.",

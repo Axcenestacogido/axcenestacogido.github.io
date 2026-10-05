@@ -37,13 +37,13 @@ El **Help 'Em Up Harness** es el que más citan los veterinarios de rehabilitaci
 debilidad real en las patas traseras, precisamente porque el asa trasera está diseñada para elevar
 desde la cadera, no solo para tirar hacia arriba.
 
-{% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN-3", "Help 'Em Up Harness" %}
+{% enlaceAfiliado "https://www.amazon.es/dp/B0DK821BBF", "Help 'Em Up Harness" %}
 
 El **Ruffwear Web Master Harness** encaja mejor si tu perro todavía camina bien la mayor parte del
 tiempo y solo necesita una mano extra en momentos puntuales, y además sirve como arnés de paseo
 normal el resto del día.
 
-{% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN-4", "Ruffwear Web Master Harness" %}
+{% enlaceAfiliado "https://www.amazon.es/dp/B01MT8PS0O", "Ruffwear Web Master Harness" %}
 
 *Nota: los precios pueden variar — consulta el precio y la disponibilidad actual en Amazon.*
 

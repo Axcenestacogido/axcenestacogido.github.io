@@ -25,7 +25,7 @@ Son masticables ("soft chews") con tres ingredientes principales:
 - **MSM (metilsulfonilmetano)**: un compuesto de azufre que se suele incluir por su papel en la
   reducción de la inflamación articular.
 
-{% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN-8", "Nutramax Cosequin Maximum Strength" %}
+{% enlaceAfiliado "https://www.amazon.es/dp/B0B9SRBD8J", "Nutramax Cosequin Maximum Strength" %}
 
 *Nota: el precio puede variar — consulta el precio y la disponibilidad actual en Amazon.*
 

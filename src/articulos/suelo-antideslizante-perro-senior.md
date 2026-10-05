@@ -27,7 +27,7 @@ uno encaja mejor con un perro distinto.
 
 ### DOK TigerToes
 
-{% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN-5", "DOK TigerToes" %}
+{% enlaceAfiliado "https://www.amazon.es/dp/B0C8PM417G", "DOK TigerToes" %}
 
 Son la opción más sencilla de probar primero: se ponen como un calcetín normal y dan agarre
 inmediato. El inconveniente es que muchos perros intentan quitárselos las primeras veces, y hay que
@@ -35,7 +35,7 @@ lavarlos o sustituirlos con cierta frecuencia.
 
 ### Dr. Buzby's ToeGrips
 
-{% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN-6", "Dr. Buzby's ToeGrips" %}
+{% enlaceAfiliado "https://www.amazon.es/dp/B00GWHISI6", "Dr. Buzby's ToeGrips" %}
 
 Es la solución más "permanente" de las tres, pensada para no tener que poner y quitar nada a
 diario. A cambio exige un poco más de preparación: las uñas del perro deben estar recortadas a una

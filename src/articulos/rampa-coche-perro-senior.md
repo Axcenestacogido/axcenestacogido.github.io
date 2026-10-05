@@ -37,7 +37,7 @@ consultadas para este artículo. Es telescópica (se ajusta entre 39" y 72" seg�
 soporta más de 400 libras, y su superficie está pensada para dar agarre tanto en seco como en
 mojado.
 
-{% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN-2", "PetSafe Solvit Deluxe Telescoping Pet Ramp" %}
+{% enlaceAfiliado "https://www.amazon.es/dp/B000RUJEUU", "PetSafe Solvit Deluxe Telescoping Pet Ramp" %}
 
 *Nota: el precio puede variar — consulta el precio y la disponibilidad actual en Amazon.*
 

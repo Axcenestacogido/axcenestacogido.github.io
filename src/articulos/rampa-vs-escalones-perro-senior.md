@@ -50,7 +50,7 @@ demasiado, incluso si el escalón en sí es bajo.
 
 {% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN", "PetSafe CozyUp Bed Ramp" %}
 
-{% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN-9", "PetSafe CozyUp Steps" %}
+{% enlaceAfiliado "https://www.amazon.es/dp/B084SV3JR4", "PetSafe CozyUp Steps" %}
 
 *Nota: los precios pueden variar — consulta el precio y la disponibilidad actual en Amazon.*
 

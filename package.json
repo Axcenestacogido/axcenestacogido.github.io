@@ -1,0 +1,15 @@
+{
+  "name": "blog-afiliacion",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Esqueleto tecnico de un blog de nicho con afiliacion (Amazon Associates + AdSense), para desplegar gratis en GitHub Pages. Proyecto independiente del pipeline de Axcencorp.",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "node -e \"require('fs').rmSync('_site', { recursive: true, force: true })\""
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  }
+}

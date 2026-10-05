@@ -1,0 +1,34 @@
+---
+layout: layouts/base.njk
+---
+<article class="articulo">
+  <header class="articulo-cabecera">
+    <h1>{{ title }}</h1>
+    {% if fechaPublicacion %}
+    <p class="articulo-fecha">Publicado el {{ fechaPublicacion | fechaEs }}</p>
+    {% endif %}
+  </header>
+
+  {# Declaracion de afiliacion, visible ARRIBA del contenido (no al pie): lo exige la FTC
+     y la Directiva Omnibus de la UE - "cerca del enlace o al principio del contenido".
+     Ver vault/30-Conocimiento/blog-afiliacion/_indice.md, seccion "Cumplimiento legal". #}
+  <p class="disclosure disclosure-articulo">{{ site.disclosureAmazon }}</p>
+
+  <div class="articulo-cuerpo">
+    {{ content | safe }}
+  </div>
+
+  {#
+    Como enlazar un producto de afiliado dentro del cuerpo Markdown del articulo:
+    usa el shortcode `enlaceAfiliado`, que ya añade rel="sponsored nofollow" y
+    target="_blank" (los exige el propio programa de Amazon Associates y las directrices
+    de SEO para enlaces pagados/afiliados). No escribas el <a> a mano.
+
+    Ejemplo dentro de un .md:
+      {% enlaceAfiliado "https://www.amazon.es/dp/ASIN?tag=TU-TAG-21", "nombre del producto" %}
+
+    IMPORTANTE (regla del programa): no se puede prometer un precio fijo en el texto
+    ("cuesta 19,99 €"), porque Amazon cambia precios y disponibilidad sin aviso. Enlazar
+    en vivo, no citar precio como dato fijo.
+  #}
+</article>

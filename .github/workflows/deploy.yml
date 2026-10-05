@@ -1,0 +1,67 @@
+# Workflow de despliegue a GitHub Pages.
+#
+# IMPORTANTE: este archivo vive aquí (dentro de proyectos/blog-afiliacion/.github/workflows/)
+# porque este esqueleto está anidado dentro del repositorio de Axcencorp, que NO debe ganar
+# un pipeline de CI propio para un negocio distinto. GitHub solo lee workflows desde
+# ".github/workflows/" en la RAÍZ de un repositorio, así que para que esto se ejecute de
+# verdad hay que moverlo a ".github/workflows/deploy.yml" en la raíz del repositorio nuevo
+# que se cree para el blog (ver README.md de esta carpeta, sección "Publicarlo de verdad").
+#
+# Por qué hace falta un workflow (y Jekyll no lo necesitaría): GitHub Pages solo construye
+# Jekyll de forma nativa. Para cualquier otro generador (Eleventy, Hugo, Astro, Next export...)
+# hay que compilar el sitio en un runner de GitHub Actions y subir el resultado con las
+# acciones oficiales de Pages. Es el patrón estándar documentado por GitHub.
+
+name: Desplegar a GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Construir el sitio
+        run: npm run build
+
+      - name: Preparar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir el artefacto de _site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Desplegar a GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

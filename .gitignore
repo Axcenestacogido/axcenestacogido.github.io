@@ -1,0 +1,9 @@
+# Dependencias (ya ignorado también por el .gitignore raíz de Axcencorp, se repite aquí
+# para que esta carpeta funcione sola el día que se mueva a su propio repositorio).
+node_modules/
+
+# Salida del build de Eleventy. Se regenera con `npm run build`; no es código fuente.
+_site/
+
+# Caché de Eleventy.
+.cache/

@@ -1,0 +1,81 @@
+/* Estilos minimos. Sustituir por los definitivos cuando se decida identidad visual. */
+
+:root {
+  --color-texto: #1a1a1a;
+  --color-fondo: #ffffff;
+  --color-acento: #0a5c36;
+  --color-disclosure-fondo: #f3f3f3;
+  --ancho-maximo: 42rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  line-height: 1.6;
+}
+
+.sitio-cabecera,
+main,
+.sitio-pie {
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+}
+
+.sitio-cabecera {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.sitio-marca {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-acento);
+  text-decoration: none;
+}
+
+a {
+  color: var(--color-acento);
+}
+
+.disclosure {
+  font-size: 0.85rem;
+  color: #444;
+  background: var(--color-disclosure-fondo);
+  border-radius: 0.4rem;
+  padding: 0.6rem 0.8rem;
+}
+
+.disclosure-articulo {
+  margin-top: 1rem;
+}
+
+.articulo-fecha {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.lista-articulos {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-articulos li {
+  margin-bottom: 1.25rem;
+}
+
+.lista-articulos h2 {
+  margin-bottom: 0.2rem;
+}
+
+.sitio-pie {
+  border-top: 1px solid #e5e5e5;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #666;
+}

@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+title: Inicio
+eleventyExcludeFromCollections: true
+permalink: /
+---
+<section class="portada">
+  <h1>{{ site.nombre }}</h1>
+  <p>{{ site.descripcion }}</p>
+
+  <h2>Últimos artículos</h2>
+  <ul class="lista-articulos">
+    {% for articulo in collections.articulo | reverse %}
+    <li>
+      <h2><a href="{{ articulo.url }}">{{ articulo.data.title }}</a></h2>
+      {% if articulo.data.metaDescripcion %}<p>{{ articulo.data.metaDescripcion }}</p>{% endif %}
+    </li>
+    {% else %}
+    <li>Todavía no hay artículos publicados.</li>
+    {% endfor %}
+  </ul>
+</section>

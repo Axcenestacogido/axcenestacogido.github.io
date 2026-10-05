@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="{{ site.idioma }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} · {{ site.nombre }}{% else %}{{ site.nombre }}{% endif %}</title>
+  <meta name="description" content="{{ metaDescripcion or site.descripcion }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  {# TODO (dueño/estratega): cuando se dé de alta AdSense, pegar aquí el script de
+     verificación del sitio y, tras la aprobación, el script de anuncios. No se incluye
+     por defecto para no declarar un ID de AdSense que todavía no existe. #}
+</head>
+<body>
+  <header class="sitio-cabecera">
+    <a class="sitio-marca" href="/">{{ site.nombre }}</a>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="sitio-pie">
+    <p class="disclosure">{{ site.disclosureAmazon }}</p>
+    <p>&copy; {% anio %} {{ site.nombre }}</p>
+  </footer>
+</body>
+</html>

@@ -60,6 +60,15 @@ a {
   font-size: 0.9rem;
 }
 
+.articulo-imagen {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
 .lista-articulos {
   list-style: none;
   padding: 0;

@@ -5,6 +5,8 @@ title: "Cosequin para perros senior: así es el suplemento de glucosamina más v
 metaDescripcion: "Qué hace el Nutramax Cosequin Maximum Strength, cuánto tiempo tarda en notarse y qué debes consultar con tu veterinario antes de dárselo a tu perro senior."
 fechaPublicacion: 2026-10-05
 permalink: /articulos/cosequin-suplemento-articular-perro/
+imagen: /assets/img/articulos/cosequin-suplemento-articular-perro.jpg
+imagenAlt: "Perro tumbado en reposo tranquilo sobre una alfombra"
 ---
 
 Si tu perro empieza a mostrar rigidez al levantarse, cojera leve o menos ganas de moverse —señales

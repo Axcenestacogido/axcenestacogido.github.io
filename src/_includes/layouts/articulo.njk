@@ -9,6 +9,10 @@ layout: layouts/base.njk
     {% endif %}
   </header>
 
+  {% if imagen %}
+  <img class="articulo-imagen" src="{{ imagen }}" alt="{{ imagenAlt }}" loading="lazy">
+  {% endif %}
+
   {# Declaracion de afiliacion, visible ARRIBA del contenido (no al pie): lo exige la FTC
      y la Directiva Omnibus de la UE - "cerca del enlace o al principio del contenido".
      Ver vault/30-Conocimiento/blog-afiliacion/_indice.md, seccion "Cumplimiento legal". #}

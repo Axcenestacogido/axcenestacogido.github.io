@@ -2,9 +2,11 @@
 layout: layouts/articulo.njk
 tags: articulo
 title: "Calcetines y alfombrillas antideslizantes para que tu perro senior no resbale en el suelo de madera o tarima"
-metaDescripcion: "Comparativa de tres soluciones contra los resbalones en suelo duro: calcetines DOK TigerToes, anillos Dr. Buzby's ToeGrips y almohadillas Aqumax Anti-Slip Pads. Cuál conviene según tu perro."
+metaDescripcion: "Comparativa de tres soluciones contra los resbalones en suelo duro: calcetines DOK TigerToes, anillos Dr. Buzby's ToeGrips y almohadillas VALFRID Protector de Patas. Cuál conviene según tu perro."
 fechaPublicacion: 2026-10-05
 permalink: /articulos/suelo-antideslizante-perro-senior/
+imagen: /assets/img/articulos/suelo-antideslizante-perro-senior.jpg
+imagenAlt: "Perro tumbado sobre un suelo de madera (tarima)"
 ---
 
 El suelo de madera, tarima o baldosa no es solo incómodo para un perro senior: es un riesgo real.
@@ -23,7 +25,7 @@ uno encaja mejor con un perro distinto.
 |---|---|---|---|
 | **DOK TigerToes** | Calcetines de tela con suela antideslizante | Fáciles de poner y quitar, buena primera opción para probar | Se pueden perder, mojar o desgastar; hay que reponerlos |
 | **Dr. Buzby's ToeGrips** | Anillos de goma adhesivos para cada uña | Solución más duradera, el perro no nota que lleva "algo puesto" como con un calcetín | Hay que recortar las uñas antes de ponerlos y la colocación inicial lleva más tiempo |
-| **Aqumax Anti-Slip Pads** | Almohadillas adhesivas pegadas directamente a la almohadilla de la pata | La opción más económica de las tres | Menos duradera, se despega antes, especialmente con uso intenso |
+| **VALFRID Protector de Patas** | Almohadillas adhesivas pegadas directamente a la almohadilla de la pata | La opción más económica de las tres | Menos duradera, se despega antes, especialmente con uso intenso |
 
 ### DOK TigerToes
 
@@ -42,9 +44,9 @@ diario. A cambio exige un poco más de preparación: las uñas del perro deben e
 longitud concreta para que los anillos queden bien sujetos, y la primera colocación conviene
 hacerla con calma.
 
-### Aqumax Anti-Slip Pads
+### VALFRID Protector de Patas
 
-{% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN-7", "Aqumax Anti-Slip Pads" %}
+{% enlaceAfiliado "https://www.amazon.es/dp/B07FLVJ2ZT", "VALFRID Protector de Patas" %}
 
 Son la opción más barata para probar si el problema es leve o quieres ver si tu perro tolera algo
 pegado a la pata antes de invertir en una solución más duradera. Se despegan antes que las otras
@@ -56,7 +58,7 @@ dos, sobre todo si el perro camina mucho o se moja las patas con frecuencia.
 - Si tu perro va a necesitar esto de forma permanente y quieres algo que no haya que reponer cada
   semana: los **ToeGrips** son la inversión que más dura.
 - Si el resbalón es ocasional, en una zona concreta de la casa, y quieres la opción más económica:
-  las **Aqumax**.
+  las **VALFRID**.
 
 *Nota: los precios pueden variar — consulta el precio y la disponibilidad actual en Amazon.*
 

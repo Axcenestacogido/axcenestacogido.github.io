@@ -2,9 +2,11 @@
 layout: layouts/articulo.njk
 tags: articulo
 title: "Las mejores rampas para que tu perro senior suba a la cama sin saltar"
-metaDescripcion: "Guía de compra de rampas para cama para perros mayores: qué mirar antes de comprar y comparativa de las opciones más recomendadas, con la PetSafe CozyUp como mejor opción general."
+metaDescripcion: "Guía de compra de rampas para cama para perros mayores: qué mirar antes de comprar y comparativa de las opciones más recomendadas, con la PRIORPET Rampa para Cama como mejor opción general."
 fechaPublicacion: 2026-10-05
 permalink: /articulos/rampas-cama-perro-senior/
+imagen: /assets/img/articulos/rampas-cama-perro-senior.jpg
+imagenAlt: "Perro tumbado y relajado junto a una cama en un dormitorio"
 ---
 
 Si tu perro ha empezado a dudar antes de saltar a la cama, o directamente ha dejado de intentarlo,
@@ -35,15 +37,15 @@ sirven igual para un perro mayor, y elegir mal significa que el perro se niegue 
 
 | Producto | Punto fuerte | A tener en cuenta |
 |---|---|---|
-| **PetSafe CozyUp Bed Ramp** | Rampa de madera de 70", inclinación suave pensada específicamente para perros mayores y recuperación post-cirugía | Es más voluminosa que las plegables; conviene medir el espacio del dormitorio antes |
+| **PRIORPET Rampa para Cama** | Rampa de madera de abedul, ajustable en 7 alturas (30-94,5 cm), con rieles de seguridad y agarre antideslizante, pensada para perros mayores y recuperación post-cirugía | Es más voluminosa que las plegables; conviene medir el espacio del dormitorio antes |
 | Alternativa plegable de aluminio | Más ligera y fácil de guardar | Suele tener más inclinación, menos ideal para artritis avanzada |
 | Alternativa con superficie de moqueta | Agarre extra para perros muy inseguros al pisar | Absorbe humedad y hay que lavarla con regularidad |
 
-Para la mayoría de perros senior, la **PetSafe CozyUp Bed Ramp** es la opción que mejor equilibra
+Para la mayoría de perros senior, la **PRIORPET Rampa para Cama** es la opción que mejor equilibra
 inclinación suave, estabilidad y un propósito pensado directamente para esta etapa de la vida del
 perro, que es justo lo que no ofrecen las rampas genéricas de coche adaptadas a la cama.
 
-{% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN", "PetSafe CozyUp Bed Ramp" %}
+{% enlaceAfiliado "https://www.amazon.es/dp/B0CS3LRTFY", "PRIORPET Rampa para Cama" %}
 
 *Nota: el precio puede variar — consulta el precio y la disponibilidad actual en Amazon.*
 

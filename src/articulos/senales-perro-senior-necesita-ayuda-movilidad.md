@@ -5,6 +5,8 @@ title: "10 señales de que tu perro senior necesita ayuda de movilidad (y qué h
 metaDescripcion: "Lista de señales de movilidad reducida en perros mayores, qué hacer en cada caso, y cuáles de ellas son urgencia veterinaria y no se resuelven con un producto."
 fechaPublicacion: 2026-10-05
 permalink: /articulos/senales-perro-senior-necesita-ayuda-movilidad/
+imagen: /assets/img/articulos/senales-perro-senior-necesita-ayuda-movilidad.jpg
+imagenAlt: "Perro mayor tumbado en una acera, con aspecto de movilidad reducida"
 ---
 
 A los perros se les da mal quejarse. Un perro senior rara vez va a "avisar" de que le duele algo:

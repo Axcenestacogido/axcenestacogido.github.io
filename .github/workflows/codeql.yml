@@ -1,0 +1,41 @@
+# CodeQL es el analizador de seguridad gratuito de GitHub para repositorios
+# públicos. Lee el código JavaScript/TypeScript buscando fallos típicos
+# (inyecciones, datos sin validar, etc.) y avisa en la pestaña "Security".
+# Se ejecuta una vez por semana y en cada Pull Request. Solo lee: no cambia nada.
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  security-events: write
+  contents: read
+  actions: read
+
+jobs:
+  analizar:
+    name: Analizar (javascript-typescript)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Preparar CodeQL
+        uses: github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
+        with:
+          languages: javascript-typescript
+          build-mode: none
+
+      - name: Analizar
+        uses: github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
+        with:
+          category: "/language:javascript-typescript"

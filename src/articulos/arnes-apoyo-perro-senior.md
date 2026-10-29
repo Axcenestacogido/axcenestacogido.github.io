@@ -5,6 +5,8 @@ title: "Arnés de apoyo para perro senior con patas traseras débiles: Help 'Em 
 metaDescripcion: "Comparativa entre el Help 'Em Up Harness y el Ruffwear Web Master Harness: cuál conviene según si tu perro necesita ayuda puntual para subir escaleras o soporte permanente en las patas traseras."
 fechaPublicacion: 2026-10-05
 permalink: /articulos/arnes-apoyo-perro-senior/
+imagen: /assets/img/articulos/arnes-apoyo-perro-senior.jpg
+imagenAlt: "Perro con arnés negro genérico puesto, sin marca ni logo visible"
 ---
 
 Un arnés de paseo normal —el que usas a diario para salir a la calle— no está pensado para

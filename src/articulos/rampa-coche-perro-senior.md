@@ -5,6 +5,8 @@ title: "Rampa plegable para coche para perros senior: así ayuda a tu perro a su
 metaDescripcion: "Por qué subir al coche es más duro para las articulaciones que subir a la cama, y cómo es la PetSafe Solvit Deluxe Telescoping Pet Ramp, la rampa de coche que más citan las clínicas de rehabilitación veterinaria."
 fechaPublicacion: 2026-10-05
 permalink: /articulos/rampa-coche-perro-senior/
+imagen: /assets/img/articulos/rampa-coche-perro-senior.jpg
+imagenAlt: "Perro asomado por la ventana de un coche durante un paseo"
 ---
 
 Subir al coche es, para un perro senior, un esfuerzo distinto —y normalmente peor— que subir a la

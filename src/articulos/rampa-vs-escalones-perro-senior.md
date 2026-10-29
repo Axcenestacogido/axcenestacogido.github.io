@@ -5,6 +5,8 @@ title: "Rampa o escalones para que tu perro senior suba a la cama: qué conviene
 metaDescripcion: "Comparativa entre rampa y escalones para perros senior: cuándo conviene cada solución según el grado de movilidad del perro, el espacio disponible y si se pueden guardar."
 fechaPublicacion: 2026-10-05
 permalink: /articulos/rampa-vs-escalones-perro-senior/
+imagen: /assets/img/articulos/rampa-vs-escalones-perro-senior.jpg
+imagenAlt: "Perro de pie sobre unos escalones de exterior"
 ---
 
 Una vez decides que tu perro necesita ayuda para subir a la cama —algo que suele empezar por
@@ -39,7 +41,7 @@ demasiado, incluso si el escalón en sí es bajo.
 
 ## Comparativa de espacio y almacenaje
 
-| | Rampa (PetSafe CozyUp Bed Ramp) | Escalones (PetSafe CozyUp Steps) |
+| | Rampa (PRIORPET Rampa para Cama) | Escalones (PetSafe CozyUp Steps) |
 |---|---|---|
 | Esfuerzo articular | Mínimo, subida casi plana | Moderado, flexión en cada peldaño |
 | Espacio en el suelo | Necesita bastante recorrido horizontal | Ocupa menos superficie, más compacto |
@@ -48,7 +50,7 @@ demasiado, incluso si el escalón en sí es bajo.
 
 ## Las dos opciones de la misma gama
 
-{% enlaceAfiliado "https://www.amazon.es/dp/EJEMPLO-ASIN", "PetSafe CozyUp Bed Ramp" %}
+{% enlaceAfiliado "https://www.amazon.es/dp/B0CS3LRTFY", "PRIORPET Rampa para Cama" %}
 
 {% enlaceAfiliado "https://www.amazon.es/dp/B084SV3JR4", "PetSafe CozyUp Steps" %}
 

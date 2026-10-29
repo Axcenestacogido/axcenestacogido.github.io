@@ -56,3 +56,20 @@ git subtree push --prefix proyectos/blog-afiliacion blog main
 ```
 
 (el remoto `blog` apunta a `https://github.com/Axcenestacogido/axcenestacogido.github.io.git`).
+
+## Publicación automática (desde el 29-oct-2026)
+
+- Cada lunes la tarea `blog-articulo-semanal` de Axcencorp escribe un artículo y lo propone con
+  `npx tsx src/proponer-articulo.ts <slug>` (desde la raíz de Axcencorp): rama `articulo/<slug>`
+  en el repo del blog, PR contra `main` y aviso por Telegram. El token es `BLOG_GITHUB_TOKEN`
+  en el `.env` (fine-grained, solo este repo, Contents + Pull requests en escritura).
+- `.github/workflows/auto-fusion.yml` fusiona ese PR si sigue abierto 24 h y lanza el
+  despliegue. **Para vetarlo: cerrar el PR** (o ponerle la etiqueta `veto`). Solo toca ramas
+  `articulo/`: cualquier otro PR espera a que lo fusiones tú.
+- `.github/workflows/revisar-enlaces.yml` (miércoles) comprueba que los productos de Amazon
+  sigan existiendo y abre un aviso en Issues si alguno se cae.
+- Como `main` del blog recibe ahora artículos por PR, antes de un `git subtree push` manual
+  trae lo publicado: `git subtree pull --prefix proyectos/blog-afiliacion blog main`. Mejor
+  aún, publica también por PR.
+- Search Console: el código de verificación (etiqueta HTML) va en `googleVerificacion` de
+  `src/_data/site.js`. No es secreto.

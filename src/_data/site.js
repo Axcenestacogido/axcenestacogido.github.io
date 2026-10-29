@@ -12,6 +12,9 @@ export default {
   // Tag de Amazon Afiliados (amazon.es), p. ej. "minombre-21". Vacio mientras no haya alta: los
   // enlaces salen como busquedas normales en Amazon, sin tag, y no hay ningun enlace roto.
   amazonTag: "perrosenioren-21",
+  // Codigo de verificacion de Google Search Console (metodo "etiqueta HTML": solo el valor de
+  // content="..."). No es secreto: sale en el HTML publico. Vacio = no se pone la etiqueta.
+  googleVerificacion: "",
   // Texto que exige el Acuerdo Operativo de Amazon.es Afiliados, tal cual.
   disclosureAmazon:
     "En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.",

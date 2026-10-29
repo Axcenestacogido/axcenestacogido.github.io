@@ -1,0 +1,67 @@
+# Revisa cada semana que los enlaces a Amazon del blog sigan vivos.
+#
+# Construye el sitio, saca los enlaces a /dp/<ASIN> y pide cada pagina UNA vez, despacio
+# (unos 20 enlaces, con pausa entre ellos). No es trafico de clics: son peticiones sin el tag
+# de afiliado, para que no cuenten como visitas en Amazon Afiliados.
+# Si alguno da 404 o ya no se vende, abre (o actualiza) un aviso en Issues.
+
+name: Revisar enlaces de Amazon
+
+on:
+  schedule:
+    - cron: "40 6 * * 3"   # miercoles 06:40 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Comprobar cada producto
+        id: revisar
+        run: |
+          set -uo pipefail
+          grep -rhoE 'https://www\.amazon\.es/dp/[A-Z0-9]{10}' _site | sort -u > enlaces.txt
+          : > rotos.md
+          while read -r url; do
+            asin="${url##*/}"
+            codigo=$(curl -s -L -o pagina.html -w '%{http_code}' \
+              -A 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36' \
+              -H 'Accept-Language: es-ES' "$url" || echo 000)
+            paginas=$(grep -rl "$asin" _site --include=index.html | sed 's#^_site##; s#index.html$##' | tr '\n' ' ')
+            if [ "$codigo" = "404" ]; then
+              echo "- \`$asin\` ya no existe (404). En: $paginas" >> rotos.md
+            elif [ "$codigo" = "200" ] && grep -q 'Actualmente no disponible' pagina.html; then
+              echo "- \`$asin\` sigue en Amazon pero no se vende. En: $paginas" >> rotos.md
+            elif [ "$codigo" != "200" ]; then
+              echo "Aviso: $asin respondio $codigo (Amazon a veces frena a los robots; no se marca como roto)"
+            fi
+            sleep 5
+          done < enlaces.txt
+          echo "Revisados $(wc -l < enlaces.txt) enlaces."
+          cat rotos.md
+      - name: Avisar si hay enlaces rotos
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          [ -s rotos.md ] || { echo "Todo bien."; exit 0; }
+          titulo="Enlaces de Amazon que hay que cambiar"
+          cuerpo=$(printf 'Revision del %s. Cambia el ASIN por otro producto equivalente (o quita el enlace):\n\n%s\n' "$(date -u +%F)" "$(cat rotos.md)")
+          abierto=$(gh issue list --repo "$REPO" --state open --search "in:title \"$titulo\"" --json number --jq '.[0].number // empty')
+          if [ -n "$abierto" ]; then
+            gh issue comment "$abierto" --repo "$REPO" --body "$cuerpo"
+          else
+            gh issue create --repo "$REPO" --title "$titulo" --body "$cuerpo"
+          fi

@@ -10,7 +10,8 @@ layout: layouts/base.njk
   </header>
 
   {% if imagen %}
-  <img class="articulo-imagen" src="{{ imagen }}" alt="{{ imagenAlt }}" loading="lazy">
+  {# Es lo primero que se ve: sin lazy y con prioridad, para que la pagina pinte antes (lo mide Google). #}
+  <img class="articulo-imagen" src="{{ imagen }}" alt="{{ imagenAlt }}" fetchpriority="high" decoding="async">
   {% endif %}
 
   {# Declaracion de afiliacion, visible ARRIBA del contenido (no al pie): lo exige la FTC

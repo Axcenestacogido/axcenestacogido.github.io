@@ -12,6 +12,27 @@
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:site_name" content="{{ site.nombre }}">
   <meta property="og:locale" content="es_ES">
+  {% if imagen %}<meta property="og:image" content="{{ site.url }}{{ imagen }}">
+  <meta name="twitter:card" content="summary_large_image">{% endif %}
+  {% if site.googleVerificacion %}<meta name="google-site-verification" content="{{ site.googleVerificacion }}">{% endif %}
+  {% if layout == 'layouts/articulo.njk' %}
+  {# Datos estructurados (schema.org) para que Google entienda que es un articulo y su fecha. #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ title | dump | safe }},
+    "description": {{ (metaDescripcion or site.descripcion) | dump | safe }},
+    {% if imagen %}"image": "{{ site.url }}{{ imagen }}",{% endif %}
+    {% if fechaPublicacion %}"datePublished": "{{ fechaPublicacion | fechaIso }}",
+    "dateModified": "{{ (fechaActualizacion or fechaPublicacion) | fechaIso }}",{% endif %}
+    "inLanguage": "es-ES",
+    "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+    "author": { "@type": "Organization", "name": {{ site.nombre | dump | safe }}, "url": "{{ site.url }}/" },
+    "publisher": { "@type": "Organization", "name": {{ site.nombre | dump | safe }}, "url": "{{ site.url }}/" }
+  }
+  </script>
+  {% endif %}
   <link rel="stylesheet" href="/assets/css/style.css">
 
   {# TODO (dueño/estratega): cuando se dé de alta AdSense, pegar aquí el script de

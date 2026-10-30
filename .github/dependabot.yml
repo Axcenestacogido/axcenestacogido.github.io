@@ -1,0 +1,31 @@
+# Dependabot revisa cada semana si hay versiones nuevas de las librerías que usa
+# esta web y abre un Pull Request con la actualización. Nunca toca main por su
+# cuenta: tú revisas el PR y decides si lo aceptas.
+# Las actualizaciones pequeñas (menores y parches) llegan juntas en un solo PR
+# para no llenarte la bandeja. Las grandes (cambio de versión principal) llegan
+# por separado porque pueden romper cosas y conviene mirarlas con calma.
+version: 2
+updates:
+  # Librerías de npm (package.json)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      npm-menores-y-parches:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Acciones de GitHub usadas en .github/workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      acciones-menores-y-parches:
+        update-types:
+          - "minor"
+          - "patch"

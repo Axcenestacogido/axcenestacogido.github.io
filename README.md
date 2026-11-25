@@ -1,5 +1,11 @@
 # Perro Senior en Casa — blog de afiliación
 
+> **Blog cerrado el 25-nov-2026 (archivado).** Jose Manuel lo cierra para centrarse en otros
+> proyectos. Ya no se publican artículos: se quitaron la fusión automática de artículos
+> (`auto-fusion.yml`) y la revisión semanal de enlaces de Amazon (`revisar-enlaces.yml`).
+> El contenido se conserva tal cual. Para reabrirlo, basta con recuperar esos dos workflows
+> del historial de git.
+
 Blog estático (Eleventy) sobre ayudas de movilidad para perros mayores, con enlaces de afiliado de
 Amazon.es. Se publica gratis en GitHub Pages: **https://axcenestacogido.github.io/**
 
